@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:game_club/api_key.dart';
+import 'package:game_club/services/igdbapi/igdbapi.pb.dart';
 
 class IGDBService {
   final Dio _dio;
@@ -12,14 +13,15 @@ class IGDBService {
 
   Future<String> getHttp() async {
     try {
-      final response = await _dio.post<dynamic>(
+      final response = await _dio.post<List<int>>(
         _base + _section,
-        options: Options(
-          headers: api_key_header,
-        ),
+        options:
+            Options(headers: api_key_header, responseType: ResponseType.bytes),
       );
 
-      return response.toString();
+      final gameResult = GameResult.fromBuffer(response.data);
+
+      return gameResult.toDebugString();
     } catch (e) {
       return e.toString();
     }
