@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:game_club/services/igdb_service.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider(
-      create: (_) => IGDBService(),
+      create: (_) => IGDBService(Dio()),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
