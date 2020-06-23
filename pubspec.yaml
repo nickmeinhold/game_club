@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
 
   protobuf:
+  dio:
+  provider:
 
 dev_dependencies:
   flutter_test:
