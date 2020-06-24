@@ -13,11 +13,10 @@ class IGDBService {
 
   Future<String> getHttp() async {
     try {
-      final response = await _dio.post<List<int>>(
-        _base + _section,
-        options:
-            Options(headers: api_key_header, responseType: ResponseType.bytes),
-      );
+      final response = await _dio.post<List<int>>(_base + _section,
+          options: Options(
+              headers: api_key_header, responseType: ResponseType.bytes),
+          data: 'fields name; limit 10;');
 
       final gameResult = GameResult.fromBuffer(response.data);
 
