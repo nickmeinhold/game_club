@@ -47,3 +47,11 @@ app.*.map.json
 
 # don't add the api key to version control 
 lib/api_key.dart
+
+## my ignores 
+
+# specifies firebase project 
+.firebaserc
+
+# local firebase config 
+.firebase
