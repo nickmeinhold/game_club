@@ -55,3 +55,6 @@ lib/api_key.dart
 
 # local firebase config 
 .firebase
+
+# ts-proto node package 
+util/node_modules

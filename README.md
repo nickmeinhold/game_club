@@ -6,7 +6,17 @@ Keep a list and vote on games for the next GameClub meeting. Read and add review
 
 firebase deploy --only hosting:game-club-melbourne 
 
-## Setup protobuf and generate client  
+## Generate typescript client 
+
+Using [stephenh/ts-proto: An idiomatic protobuf generator for TypeScript](https://github.com/stephenh/ts-proto)
+
+```sh
+cd functions
+npm install ts-proto --save-dev
+protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./src ./igdbapi.proto 
+```
+
+## Setup protobuf and generate dart client 
 
 This has already been done for this project but for reference: 
 
