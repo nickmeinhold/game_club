@@ -2,6 +2,10 @@
 
 Keep a list and vote on games for the next GameClub meeting. Read and add reviews for games. Uses the IGDB API. 
 
+## Common Commands 
+
+firebase deploy --only hosting:game-club-melbourne 
+
 ## Setup protobuf and generate client  
 
 This has already been done for this project but for reference: 
@@ -35,3 +39,11 @@ protoc timestamp.proto --dart_out=. --proto_path=/path/to/this/project/
 ```
 
 9.  added the files to `lib/services/google/protobuf/`
+
+## Deploy to Firebase
+
+- create a firebase project 
+- `firebase init` and select 
+  - your project 
+  - hosting 
+- `firebase deploy --only hosting:<project-name>`
