@@ -56,4 +56,5 @@ protoc timestamp.proto --dart_out=. --proto_path=/path/to/this/project/
 - `firebase init` and select 
   - your project 
   - hosting 
+- `firebase deploy --only functions`
 - `firebase deploy --only hosting:<project-name>`
