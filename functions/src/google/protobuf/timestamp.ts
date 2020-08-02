@@ -1,5 +1,7 @@
 /* eslint-disable */
+// tslint:disable-next-line: no-implicit-dependencies
 import * as Long from 'long';
+// tslint:disable-next-line: no-implicit-dependencies
 import { Writer, Reader } from 'protobufjs/minimal';
 
 
@@ -125,7 +127,7 @@ export const Timestamp = {
   },
   decode(input: Uint8Array | Reader, length?: number): Timestamp {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseTimestamp } as Timestamp;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -184,6 +186,7 @@ type DeepPartial<T> = T extends Builtin
   ? T
   : T extends Array<infer U>
   ? Array<DeepPartial<U>>
+  // tslint:disable-next-line: no-shadowed-variable
   : T extends ReadonlyArray<infer U>
   ? ReadonlyArray<DeepPartial<U>>
   : T extends {}
