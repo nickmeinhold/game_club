@@ -58,3 +58,11 @@ protoc timestamp.proto --dart_out=. --proto_path=/path/to/this/project/
   - hosting 
 - `firebase deploy --only functions`
 - `firebase deploy --only hosting:<project-name>`
+
+## Setup cloud functions emulator 
+
+see: [Run functions locally  |  Firebase](https://firebase.google.com/docs/functions/local-emulator) 
+- `firebase functions:config:get > .runtimeconfig.json` 
+
+Run with 
+- `firebase emulators:start --only functions` 

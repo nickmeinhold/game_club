@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:game_club/services/igdb_service.dart';
+import 'package:game_club/services/igdb_api/igdb_api_service.dart';
 import 'package:provider/provider.dart';
 
 void main() {
