@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:game_club/services/igdb_service.dart';
+import 'package:game_club/services/igdb_api/igdb_api_service.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -61,7 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _call() async {
-    final responseString = await context.read<IGDBService>().getHttp();
+    final responseString =
+        await context.read<IGDBService>().getProxiedGamesString();
     setState(() {
       _response = responseString;
     });

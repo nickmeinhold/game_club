@@ -1,6 +1,8 @@
 /* eslint-disable */
 import { Timestamp } from './google/protobuf/timestamp';
+// tslint:disable-next-line: no-implicit-dependencies
 import * as Long from 'long';
+// tslint:disable-next-line: no-implicit-dependencies
 import { Writer, Reader } from 'protobufjs/minimal';
 
 
@@ -3485,7 +3487,7 @@ export const Count = {
   },
   decode(input: Uint8Array | Reader, length?: number): Count {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCount } as Count;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -3529,14 +3531,14 @@ export const MultiQueryResult = {
   encode(message: MultiQueryResult, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.name);
     for (const v of message.results) {
-      writer.uint32(18).bytes(v!);
+      writer.uint32(18).bytes(v);
     }
     writer.uint32(24).int64(message.count);
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): MultiQueryResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseMultiQueryResult } as MultiQueryResult;
     message.results = [];
     while (reader.pos < end) {
@@ -3614,13 +3616,13 @@ export const MultiQueryResult = {
 export const MultiQueryResultArray = {
   encode(message: MultiQueryResultArray, writer: Writer = Writer.create()): Writer {
     for (const v of message.result) {
-      MultiQueryResult.encode(v!, writer.uint32(10).fork()).ldelim();
+      MultiQueryResult.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): MultiQueryResultArray {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseMultiQueryResultArray } as MultiQueryResultArray;
     message.result = [];
     while (reader.pos < end) {
@@ -3670,13 +3672,13 @@ export const MultiQueryResultArray = {
 export const AchievementResult = {
   encode(message: AchievementResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.achievements) {
-      Achievement.encode(v!, writer.uint32(10).fork()).ldelim();
+      Achievement.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): AchievementResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseAchievementResult } as AchievementResult;
     message.achievements = [];
     while (reader.pos < end) {
@@ -3760,7 +3762,7 @@ export const Achievement = {
   },
   decode(input: Uint8Array | Reader, length?: number): Achievement {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseAchievement } as Achievement;
     message.tags = [];
     while (reader.pos < end) {
@@ -4041,13 +4043,13 @@ export const Achievement = {
 export const AchievementIconResult = {
   encode(message: AchievementIconResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.achievementicons) {
-      AchievementIcon.encode(v!, writer.uint32(10).fork()).ldelim();
+      AchievementIcon.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): AchievementIconResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseAchievementIconResult } as AchievementIconResult;
     message.achievementicons = [];
     while (reader.pos < end) {
@@ -4108,7 +4110,7 @@ export const AchievementIcon = {
   },
   decode(input: Uint8Array | Reader, length?: number): AchievementIcon {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseAchievementIcon } as AchievementIcon;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -4249,13 +4251,13 @@ export const AchievementIcon = {
 export const AgeRatingResult = {
   encode(message: AgeRatingResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.ageratings) {
-      AgeRating.encode(v!, writer.uint32(10).fork()).ldelim();
+      AgeRating.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): AgeRatingResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseAgeRatingResult } as AgeRatingResult;
     message.ageratings = [];
     while (reader.pos < end) {
@@ -4307,7 +4309,7 @@ export const AgeRating = {
     writer.uint32(8).uint64(message.id);
     writer.uint32(16).int32(message.category);
     for (const v of message.contentDescriptions) {
-      AgeRatingContentDescription.encode(v!, writer.uint32(26).fork()).ldelim();
+      AgeRatingContentDescription.encode(v, writer.uint32(26).fork()).ldelim();
     }
     writer.uint32(32).int32(message.rating);
     writer.uint32(42).string(message.ratingCoverUrl);
@@ -4317,7 +4319,7 @@ export const AgeRating = {
   },
   decode(input: Uint8Array | Reader, length?: number): AgeRating {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseAgeRating } as AgeRating;
     message.contentDescriptions = [];
     while (reader.pos < end) {
@@ -4451,13 +4453,13 @@ export const AgeRating = {
 export const AgeRatingContentDescriptionResult = {
   encode(message: AgeRatingContentDescriptionResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.ageratingcontentdescriptions) {
-      AgeRatingContentDescription.encode(v!, writer.uint32(10).fork()).ldelim();
+      AgeRatingContentDescription.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): AgeRatingContentDescriptionResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseAgeRatingContentDescriptionResult } as AgeRatingContentDescriptionResult;
     message.ageratingcontentdescriptions = [];
     while (reader.pos < end) {
@@ -4514,7 +4516,7 @@ export const AgeRatingContentDescription = {
   },
   decode(input: Uint8Array | Reader, length?: number): AgeRatingContentDescription {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseAgeRatingContentDescription } as AgeRatingContentDescription;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -4599,13 +4601,13 @@ export const AgeRatingContentDescription = {
 export const AlternativeNameResult = {
   encode(message: AlternativeNameResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.alternativenames) {
-      AlternativeName.encode(v!, writer.uint32(10).fork()).ldelim();
+      AlternativeName.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): AlternativeNameResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseAlternativeNameResult } as AlternativeNameResult;
     message.alternativenames = [];
     while (reader.pos < end) {
@@ -4665,7 +4667,7 @@ export const AlternativeName = {
   },
   decode(input: Uint8Array | Reader, length?: number): AlternativeName {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseAlternativeName } as AlternativeName;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -4764,13 +4766,13 @@ export const AlternativeName = {
 export const ArtworkResult = {
   encode(message: ArtworkResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.artworks) {
-      Artwork.encode(v!, writer.uint32(10).fork()).ldelim();
+      Artwork.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): ArtworkResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseArtworkResult } as ArtworkResult;
     message.artworks = [];
     while (reader.pos < end) {
@@ -4834,7 +4836,7 @@ export const Artwork = {
   },
   decode(input: Uint8Array | Reader, length?: number): Artwork {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseArtwork } as Artwork;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -4989,13 +4991,13 @@ export const Artwork = {
 export const CharacterResult = {
   encode(message: CharacterResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.characters) {
-      Character.encode(v!, writer.uint32(10).fork()).ldelim();
+      Character.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): CharacterResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCharacterResult } as CharacterResult;
     message.characters = [];
     while (reader.pos < end) {
@@ -5046,7 +5048,7 @@ export const Character = {
   encode(message: Character, writer: Writer = Writer.create()): Writer {
     writer.uint32(8).uint64(message.id);
     for (const v of message.akas) {
-      writer.uint32(18).string(v!);
+      writer.uint32(18).string(v);
     }
     writer.uint32(26).string(message.countryName);
     if (message.createdAt !== undefined && message.createdAt !== undefined) {
@@ -5054,7 +5056,7 @@ export const Character = {
     }
     writer.uint32(42).string(message.description);
     for (const v of message.games) {
-      Game.encode(v!, writer.uint32(50).fork()).ldelim();
+      Game.encode(v, writer.uint32(50).fork()).ldelim();
     }
     writer.uint32(56).int32(message.gender);
     if (message.mugShot !== undefined && message.mugShot !== undefined) {
@@ -5062,7 +5064,7 @@ export const Character = {
     }
     writer.uint32(74).string(message.name);
     for (const v of message.people) {
-      Person.encode(v!, writer.uint32(82).fork()).ldelim();
+      Person.encode(v, writer.uint32(82).fork()).ldelim();
     }
     writer.uint32(90).string(message.slug);
     writer.uint32(96).int32(message.species);
@@ -5075,7 +5077,7 @@ export const Character = {
   },
   decode(input: Uint8Array | Reader, length?: number): Character {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCharacter } as Character;
     message.akas = [];
     message.games = [];
@@ -5335,13 +5337,13 @@ export const Character = {
 export const CharacterMugShotResult = {
   encode(message: CharacterMugShotResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.charactermugshots) {
-      CharacterMugShot.encode(v!, writer.uint32(10).fork()).ldelim();
+      CharacterMugShot.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): CharacterMugShotResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCharacterMugShotResult } as CharacterMugShotResult;
     message.charactermugshots = [];
     while (reader.pos < end) {
@@ -5402,7 +5404,7 @@ export const CharacterMugShot = {
   },
   decode(input: Uint8Array | Reader, length?: number): CharacterMugShot {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCharacterMugShot } as CharacterMugShot;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -5543,13 +5545,13 @@ export const CharacterMugShot = {
 export const CollectionResult = {
   encode(message: CollectionResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.collections) {
-      Collection.encode(v!, writer.uint32(10).fork()).ldelim();
+      Collection.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): CollectionResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCollectionResult } as CollectionResult;
     message.collections = [];
     while (reader.pos < end) {
@@ -5603,7 +5605,7 @@ export const Collection = {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     for (const v of message.games) {
-      Game.encode(v!, writer.uint32(26).fork()).ldelim();
+      Game.encode(v, writer.uint32(26).fork()).ldelim();
     }
     writer.uint32(34).string(message.name);
     writer.uint32(42).string(message.slug);
@@ -5616,7 +5618,7 @@ export const Collection = {
   },
   decode(input: Uint8Array | Reader, length?: number): Collection {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCollection } as Collection;
     message.games = [];
     while (reader.pos < end) {
@@ -5764,13 +5766,13 @@ export const Collection = {
 export const CompanyResult = {
   encode(message: CompanyResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.companies) {
-      Company.encode(v!, writer.uint32(10).fork()).ldelim();
+      Company.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): CompanyResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCompanyResult } as CompanyResult;
     message.companies = [];
     while (reader.pos < end) {
@@ -5833,7 +5835,7 @@ export const Company = {
     }
     writer.uint32(58).string(message.description);
     for (const v of message.developed) {
-      Game.encode(v!, writer.uint32(66).fork()).ldelim();
+      Game.encode(v, writer.uint32(66).fork()).ldelim();
     }
     if (message.logo !== undefined && message.logo !== undefined) {
       CompanyLogo.encode(message.logo, writer.uint32(74).fork()).ldelim();
@@ -5843,7 +5845,7 @@ export const Company = {
       Company.encode(message.parent, writer.uint32(90).fork()).ldelim();
     }
     for (const v of message.published) {
-      Game.encode(v!, writer.uint32(98).fork()).ldelim();
+      Game.encode(v, writer.uint32(98).fork()).ldelim();
     }
     writer.uint32(106).string(message.slug);
     if (message.startDate !== undefined && message.startDate !== undefined) {
@@ -5855,14 +5857,14 @@ export const Company = {
     }
     writer.uint32(138).string(message.url);
     for (const v of message.websites) {
-      CompanyWebsite.encode(v!, writer.uint32(146).fork()).ldelim();
+      CompanyWebsite.encode(v, writer.uint32(146).fork()).ldelim();
     }
     writer.uint32(154).string(message.checksum);
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): Company {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCompany } as Company;
     message.developed = [];
     message.published = [];
@@ -6178,13 +6180,13 @@ export const Company = {
 export const CompanyLogoResult = {
   encode(message: CompanyLogoResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.companylogos) {
-      CompanyLogo.encode(v!, writer.uint32(10).fork()).ldelim();
+      CompanyLogo.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): CompanyLogoResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCompanyLogoResult } as CompanyLogoResult;
     message.companylogos = [];
     while (reader.pos < end) {
@@ -6245,7 +6247,7 @@ export const CompanyLogo = {
   },
   decode(input: Uint8Array | Reader, length?: number): CompanyLogo {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCompanyLogo } as CompanyLogo;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -6386,13 +6388,13 @@ export const CompanyLogo = {
 export const CompanyWebsiteResult = {
   encode(message: CompanyWebsiteResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.companywebsites) {
-      CompanyWebsite.encode(v!, writer.uint32(10).fork()).ldelim();
+      CompanyWebsite.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): CompanyWebsiteResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCompanyWebsiteResult } as CompanyWebsiteResult;
     message.companywebsites = [];
     while (reader.pos < end) {
@@ -6450,7 +6452,7 @@ export const CompanyWebsite = {
   },
   decode(input: Uint8Array | Reader, length?: number): CompanyWebsite {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCompanyWebsite } as CompanyWebsite;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -6549,13 +6551,13 @@ export const CompanyWebsite = {
 export const CoverResult = {
   encode(message: CoverResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.covers) {
-      Cover.encode(v!, writer.uint32(10).fork()).ldelim();
+      Cover.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): CoverResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCoverResult } as CoverResult;
     message.covers = [];
     while (reader.pos < end) {
@@ -6619,7 +6621,7 @@ export const Cover = {
   },
   decode(input: Uint8Array | Reader, length?: number): Cover {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCover } as Cover;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -6774,13 +6776,13 @@ export const Cover = {
 export const CreditResult = {
   encode(message: CreditResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.credits) {
-      Credit.encode(v!, writer.uint32(10).fork()).ldelim();
+      Credit.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): CreditResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCreditResult } as CreditResult;
     message.credits = [];
     while (reader.pos < end) {
@@ -6862,7 +6864,7 @@ export const Credit = {
   },
   decode(input: Uint8Array | Reader, length?: number): Credit {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseCredit } as Credit;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -7101,13 +7103,13 @@ export const Credit = {
 export const ExternalGameResult = {
   encode(message: ExternalGameResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.externalgames) {
-      ExternalGame.encode(v!, writer.uint32(10).fork()).ldelim();
+      ExternalGame.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): ExternalGameResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseExternalGameResult } as ExternalGameResult;
     message.externalgames = [];
     while (reader.pos < end) {
@@ -7185,7 +7187,7 @@ export const ExternalGame = {
   },
   decode(input: Uint8Array | Reader, length?: number): ExternalGame {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseExternalGame } as ExternalGame;
     message.countries = [];
     while (reader.pos < end) {
@@ -7410,13 +7412,13 @@ export const ExternalGame = {
 export const FeedResult = {
   encode(message: FeedResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.feeds) {
-      Feed.encode(v!, writer.uint32(10).fork()).ldelim();
+      Feed.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): FeedResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseFeedResult } as FeedResult;
     message.feeds = [];
     while (reader.pos < end) {
@@ -7476,7 +7478,7 @@ export const Feed = {
       GameVideo.encode(message.feedVideo, writer.uint32(50).fork()).ldelim();
     }
     for (const v of message.games) {
-      Game.encode(v!, writer.uint32(58).fork()).ldelim();
+      Game.encode(v, writer.uint32(58).fork()).ldelim();
     }
     writer.uint32(66).string(message.meta);
     if (message.publishedAt !== undefined && message.publishedAt !== undefined) {
@@ -7498,7 +7500,7 @@ export const Feed = {
   },
   decode(input: Uint8Array | Reader, length?: number): Feed {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseFeed } as Feed;
     message.games = [];
     while (reader.pos < end) {
@@ -7772,13 +7774,13 @@ export const Feed = {
 export const FeedFollowResult = {
   encode(message: FeedFollowResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.feedfollows) {
-      FeedFollow.encode(v!, writer.uint32(10).fork()).ldelim();
+      FeedFollow.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): FeedFollowResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseFeedFollowResult } as FeedFollowResult;
     message.feedfollows = [];
     while (reader.pos < end) {
@@ -7846,7 +7848,7 @@ export const FeedFollow = {
   },
   decode(input: Uint8Array | Reader, length?: number): FeedFollow {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseFeedFollow } as FeedFollow;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -7973,13 +7975,13 @@ export const FeedFollow = {
 export const FollowResult = {
   encode(message: FollowResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.follows) {
-      Follow.encode(v!, writer.uint32(10).fork()).ldelim();
+      Follow.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): FollowResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseFollowResult } as FollowResult;
     message.follows = [];
     while (reader.pos < end) {
@@ -8040,7 +8042,7 @@ export const Follow = {
   },
   decode(input: Uint8Array | Reader, length?: number): Follow {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseFollow } as Follow;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -8125,13 +8127,13 @@ export const Follow = {
 export const FranchiseResult = {
   encode(message: FranchiseResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.franchises) {
-      Franchise.encode(v!, writer.uint32(10).fork()).ldelim();
+      Franchise.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): FranchiseResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseFranchiseResult } as FranchiseResult;
     message.franchises = [];
     while (reader.pos < end) {
@@ -8185,7 +8187,7 @@ export const Franchise = {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     for (const v of message.games) {
-      Game.encode(v!, writer.uint32(26).fork()).ldelim();
+      Game.encode(v, writer.uint32(26).fork()).ldelim();
     }
     writer.uint32(34).string(message.name);
     writer.uint32(42).string(message.slug);
@@ -8198,7 +8200,7 @@ export const Franchise = {
   },
   decode(input: Uint8Array | Reader, length?: number): Franchise {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseFranchise } as Franchise;
     message.games = [];
     while (reader.pos < end) {
@@ -8346,13 +8348,13 @@ export const Franchise = {
 export const GameResult = {
   encode(message: GameResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.games) {
-      Game.encode(v!, writer.uint32(10).fork()).ldelim();
+      Game.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): GameResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameResult } as GameResult;
     message.games = [];
     while (reader.pos < end) {
@@ -8403,18 +8405,18 @@ export const Game = {
   encode(message: Game, writer: Writer = Writer.create()): Writer {
     writer.uint32(8).uint64(message.id);
     for (const v of message.ageRatings) {
-      AgeRating.encode(v!, writer.uint32(18).fork()).ldelim();
+      AgeRating.encode(v, writer.uint32(18).fork()).ldelim();
     }
     writer.uint32(25).double(message.aggregatedRating);
     writer.uint32(32).int32(message.aggregatedRatingCount);
     for (const v of message.alternativeNames) {
-      AlternativeName.encode(v!, writer.uint32(42).fork()).ldelim();
+      AlternativeName.encode(v, writer.uint32(42).fork()).ldelim();
     }
     for (const v of message.artworks) {
-      Artwork.encode(v!, writer.uint32(50).fork()).ldelim();
+      Artwork.encode(v, writer.uint32(50).fork()).ldelim();
     }
     for (const v of message.bundles) {
-      Game.encode(v!, writer.uint32(58).fork()).ldelim();
+      Game.encode(v, writer.uint32(58).fork()).ldelim();
     }
     writer.uint32(64).int32(message.category);
     if (message.collection !== undefined && message.collection !== undefined) {
@@ -8427,13 +8429,13 @@ export const Game = {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(90).fork()).ldelim();
     }
     for (const v of message.dlcs) {
-      Game.encode(v!, writer.uint32(98).fork()).ldelim();
+      Game.encode(v, writer.uint32(98).fork()).ldelim();
     }
     for (const v of message.expansions) {
-      Game.encode(v!, writer.uint32(106).fork()).ldelim();
+      Game.encode(v, writer.uint32(106).fork()).ldelim();
     }
     for (const v of message.externalGames) {
-      ExternalGame.encode(v!, writer.uint32(114).fork()).ldelim();
+      ExternalGame.encode(v, writer.uint32(114).fork()).ldelim();
     }
     if (message.firstReleaseDate !== undefined && message.firstReleaseDate !== undefined) {
       Timestamp.encode(toTimestamp(message.firstReleaseDate), writer.uint32(122).fork()).ldelim();
@@ -8443,53 +8445,53 @@ export const Game = {
       Franchise.encode(message.franchise, writer.uint32(138).fork()).ldelim();
     }
     for (const v of message.franchises) {
-      Franchise.encode(v!, writer.uint32(146).fork()).ldelim();
+      Franchise.encode(v, writer.uint32(146).fork()).ldelim();
     }
     for (const v of message.gameEngines) {
-      GameEngine.encode(v!, writer.uint32(154).fork()).ldelim();
+      GameEngine.encode(v, writer.uint32(154).fork()).ldelim();
     }
     for (const v of message.gameModes) {
-      GameMode.encode(v!, writer.uint32(162).fork()).ldelim();
+      GameMode.encode(v, writer.uint32(162).fork()).ldelim();
     }
     for (const v of message.genres) {
-      Genre.encode(v!, writer.uint32(170).fork()).ldelim();
+      Genre.encode(v, writer.uint32(170).fork()).ldelim();
     }
     writer.uint32(176).int32(message.hypes);
     for (const v of message.involvedCompanies) {
-      InvolvedCompany.encode(v!, writer.uint32(186).fork()).ldelim();
+      InvolvedCompany.encode(v, writer.uint32(186).fork()).ldelim();
     }
     for (const v of message.keywords) {
-      Keyword.encode(v!, writer.uint32(194).fork()).ldelim();
+      Keyword.encode(v, writer.uint32(194).fork()).ldelim();
     }
     for (const v of message.multiplayerModes) {
-      MultiplayerMode.encode(v!, writer.uint32(202).fork()).ldelim();
+      MultiplayerMode.encode(v, writer.uint32(202).fork()).ldelim();
     }
     writer.uint32(210).string(message.name);
     if (message.parentGame !== undefined && message.parentGame !== undefined) {
       Game.encode(message.parentGame, writer.uint32(218).fork()).ldelim();
     }
     for (const v of message.platforms) {
-      Platform.encode(v!, writer.uint32(226).fork()).ldelim();
+      Platform.encode(v, writer.uint32(226).fork()).ldelim();
     }
     for (const v of message.playerPerspectives) {
-      PlayerPerspective.encode(v!, writer.uint32(234).fork()).ldelim();
+      PlayerPerspective.encode(v, writer.uint32(234).fork()).ldelim();
     }
     writer.uint32(241).double(message.popularity);
     writer.uint32(248).int32(message.pulseCount);
     writer.uint32(257).double(message.rating);
     writer.uint32(264).int32(message.ratingCount);
     for (const v of message.releaseDates) {
-      ReleaseDate.encode(v!, writer.uint32(274).fork()).ldelim();
+      ReleaseDate.encode(v, writer.uint32(274).fork()).ldelim();
     }
     for (const v of message.screenshots) {
-      Screenshot.encode(v!, writer.uint32(282).fork()).ldelim();
+      Screenshot.encode(v, writer.uint32(282).fork()).ldelim();
     }
     for (const v of message.similarGames) {
-      Game.encode(v!, writer.uint32(290).fork()).ldelim();
+      Game.encode(v, writer.uint32(290).fork()).ldelim();
     }
     writer.uint32(298).string(message.slug);
     for (const v of message.standaloneExpansions) {
-      Game.encode(v!, writer.uint32(306).fork()).ldelim();
+      Game.encode(v, writer.uint32(306).fork()).ldelim();
     }
     writer.uint32(312).int32(message.status);
     writer.uint32(322).string(message.storyline);
@@ -8500,7 +8502,7 @@ export const Game = {
     }
     writer.ldelim();
     for (const v of message.themes) {
-      Theme.encode(v!, writer.uint32(346).fork()).ldelim();
+      Theme.encode(v, writer.uint32(346).fork()).ldelim();
     }
     if (message.timeToBeat !== undefined && message.timeToBeat !== undefined) {
       TimeToBeat.encode(message.timeToBeat, writer.uint32(354).fork()).ldelim();
@@ -8516,17 +8518,17 @@ export const Game = {
     }
     writer.uint32(402).string(message.versionTitle);
     for (const v of message.videos) {
-      GameVideo.encode(v!, writer.uint32(410).fork()).ldelim();
+      GameVideo.encode(v, writer.uint32(410).fork()).ldelim();
     }
     for (const v of message.websites) {
-      Website.encode(v!, writer.uint32(418).fork()).ldelim();
+      Website.encode(v, writer.uint32(418).fork()).ldelim();
     }
     writer.uint32(426).string(message.checksum);
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): Game {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGame } as Game;
     message.ageRatings = [];
     message.alternativeNames = [];
@@ -9472,13 +9474,13 @@ export const Game = {
 export const GameEngineResult = {
   encode(message: GameEngineResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.gameengines) {
-      GameEngine.encode(v!, writer.uint32(10).fork()).ldelim();
+      GameEngine.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): GameEngineResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameEngineResult } as GameEngineResult;
     message.gameengines = [];
     while (reader.pos < end) {
@@ -9529,7 +9531,7 @@ export const GameEngine = {
   encode(message: GameEngine, writer: Writer = Writer.create()): Writer {
     writer.uint32(8).uint64(message.id);
     for (const v of message.companies) {
-      Company.encode(v!, writer.uint32(18).fork()).ldelim();
+      Company.encode(v, writer.uint32(18).fork()).ldelim();
     }
     if (message.createdAt !== undefined && message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(26).fork()).ldelim();
@@ -9540,7 +9542,7 @@ export const GameEngine = {
     }
     writer.uint32(50).string(message.name);
     for (const v of message.platforms) {
-      Platform.encode(v!, writer.uint32(58).fork()).ldelim();
+      Platform.encode(v, writer.uint32(58).fork()).ldelim();
     }
     writer.uint32(66).string(message.slug);
     if (message.updatedAt !== undefined && message.updatedAt !== undefined) {
@@ -9552,7 +9554,7 @@ export const GameEngine = {
   },
   decode(input: Uint8Array | Reader, length?: number): GameEngine {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameEngine } as GameEngine;
     message.companies = [];
     message.platforms = [];
@@ -9749,13 +9751,13 @@ export const GameEngine = {
 export const GameEngineLogoResult = {
   encode(message: GameEngineLogoResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.gameenginelogos) {
-      GameEngineLogo.encode(v!, writer.uint32(10).fork()).ldelim();
+      GameEngineLogo.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): GameEngineLogoResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameEngineLogoResult } as GameEngineLogoResult;
     message.gameenginelogos = [];
     while (reader.pos < end) {
@@ -9816,7 +9818,7 @@ export const GameEngineLogo = {
   },
   decode(input: Uint8Array | Reader, length?: number): GameEngineLogo {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameEngineLogo } as GameEngineLogo;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -9957,13 +9959,13 @@ export const GameEngineLogo = {
 export const GameModeResult = {
   encode(message: GameModeResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.gamemodes) {
-      GameMode.encode(v!, writer.uint32(10).fork()).ldelim();
+      GameMode.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): GameModeResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameModeResult } as GameModeResult;
     message.gamemodes = [];
     while (reader.pos < end) {
@@ -10027,7 +10029,7 @@ export const GameMode = {
   },
   decode(input: Uint8Array | Reader, length?: number): GameMode {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameMode } as GameMode;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -10154,13 +10156,13 @@ export const GameMode = {
 export const GameVersionResult = {
   encode(message: GameVersionResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.gameversions) {
-      GameVersion.encode(v!, writer.uint32(10).fork()).ldelim();
+      GameVersion.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): GameVersionResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameVersionResult } as GameVersionResult;
     message.gameversions = [];
     while (reader.pos < end) {
@@ -10214,13 +10216,13 @@ export const GameVersion = {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     for (const v of message.features) {
-      GameVersionFeature.encode(v!, writer.uint32(26).fork()).ldelim();
+      GameVersionFeature.encode(v, writer.uint32(26).fork()).ldelim();
     }
     if (message.game !== undefined && message.game !== undefined) {
       Game.encode(message.game, writer.uint32(34).fork()).ldelim();
     }
     for (const v of message.games) {
-      Game.encode(v!, writer.uint32(42).fork()).ldelim();
+      Game.encode(v, writer.uint32(42).fork()).ldelim();
     }
     if (message.updatedAt !== undefined && message.updatedAt !== undefined) {
       Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(50).fork()).ldelim();
@@ -10231,7 +10233,7 @@ export const GameVersion = {
   },
   decode(input: Uint8Array | Reader, length?: number): GameVersion {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameVersion } as GameVersion;
     message.features = [];
     message.games = [];
@@ -10386,13 +10388,13 @@ export const GameVersion = {
 export const GameVersionFeatureResult = {
   encode(message: GameVersionFeatureResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.gameversionfeatures) {
-      GameVersionFeature.encode(v!, writer.uint32(10).fork()).ldelim();
+      GameVersionFeature.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): GameVersionFeatureResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameVersionFeatureResult } as GameVersionFeatureResult;
     message.gameversionfeatures = [];
     while (reader.pos < end) {
@@ -10447,14 +10449,14 @@ export const GameVersionFeature = {
     writer.uint32(32).int32(message.position);
     writer.uint32(42).string(message.title);
     for (const v of message.values) {
-      GameVersionFeatureValue.encode(v!, writer.uint32(50).fork()).ldelim();
+      GameVersionFeatureValue.encode(v, writer.uint32(50).fork()).ldelim();
     }
     writer.uint32(58).string(message.checksum);
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): GameVersionFeature {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameVersionFeature } as GameVersionFeature;
     message.values = [];
     while (reader.pos < end) {
@@ -10588,13 +10590,13 @@ export const GameVersionFeature = {
 export const GameVersionFeatureValueResult = {
   encode(message: GameVersionFeatureValueResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.gameversionfeaturevalues) {
-      GameVersionFeatureValue.encode(v!, writer.uint32(10).fork()).ldelim();
+      GameVersionFeatureValue.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): GameVersionFeatureValueResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameVersionFeatureValueResult } as GameVersionFeatureValueResult;
     message.gameversionfeaturevalues = [];
     while (reader.pos < end) {
@@ -10657,7 +10659,7 @@ export const GameVersionFeatureValue = {
   },
   decode(input: Uint8Array | Reader, length?: number): GameVersionFeatureValue {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameVersionFeatureValue } as GameVersionFeatureValue;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -10770,13 +10772,13 @@ export const GameVersionFeatureValue = {
 export const GameVideoResult = {
   encode(message: GameVideoResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.gamevideos) {
-      GameVideo.encode(v!, writer.uint32(10).fork()).ldelim();
+      GameVideo.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): GameVideoResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameVideoResult } as GameVideoResult;
     message.gamevideos = [];
     while (reader.pos < end) {
@@ -10836,7 +10838,7 @@ export const GameVideo = {
   },
   decode(input: Uint8Array | Reader, length?: number): GameVideo {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameVideo } as GameVideo;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -10935,13 +10937,13 @@ export const GameVideo = {
 export const GenreResult = {
   encode(message: GenreResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.genres) {
-      Genre.encode(v!, writer.uint32(10).fork()).ldelim();
+      Genre.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): GenreResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGenreResult } as GenreResult;
     message.genres = [];
     while (reader.pos < end) {
@@ -11005,7 +11007,7 @@ export const Genre = {
   },
   decode(input: Uint8Array | Reader, length?: number): Genre {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGenre } as Genre;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -11132,13 +11134,13 @@ export const Genre = {
 export const InvolvedCompanyResult = {
   encode(message: InvolvedCompanyResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.involvedcompanies) {
-      InvolvedCompany.encode(v!, writer.uint32(10).fork()).ldelim();
+      InvolvedCompany.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): InvolvedCompanyResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseInvolvedCompanyResult } as InvolvedCompanyResult;
     message.involvedcompanies = [];
     while (reader.pos < end) {
@@ -11209,7 +11211,7 @@ export const InvolvedCompany = {
   },
   decode(input: Uint8Array | Reader, length?: number): InvolvedCompany {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseInvolvedCompany } as InvolvedCompany;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -11378,13 +11380,13 @@ export const InvolvedCompany = {
 export const KeywordResult = {
   encode(message: KeywordResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.keywords) {
-      Keyword.encode(v!, writer.uint32(10).fork()).ldelim();
+      Keyword.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): KeywordResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseKeywordResult } as KeywordResult;
     message.keywords = [];
     while (reader.pos < end) {
@@ -11448,7 +11450,7 @@ export const Keyword = {
   },
   decode(input: Uint8Array | Reader, length?: number): Keyword {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseKeyword } as Keyword;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -11575,13 +11577,13 @@ export const Keyword = {
 export const ListResult = {
   encode(message: ListResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.lists) {
-      List.encode(v!, writer.uint32(10).fork()).ldelim();
+      List.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): ListResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseListResult } as ListResult;
     message.lists = [];
     while (reader.pos < end) {
@@ -11637,7 +11639,7 @@ export const List = {
     writer.uint32(26).string(message.description);
     writer.uint32(32).int32(message.entriesCount);
     for (const v of message.listEntries) {
-      ListEntry.encode(v!, writer.uint32(42).fork()).ldelim();
+      ListEntry.encode(v, writer.uint32(42).fork()).ldelim();
     }
     writer.uint32(50).fork();
     for (const v of message.listTags) {
@@ -11645,13 +11647,13 @@ export const List = {
     }
     writer.ldelim();
     for (const v of message.listedGames) {
-      Game.encode(v!, writer.uint32(58).fork()).ldelim();
+      Game.encode(v, writer.uint32(58).fork()).ldelim();
     }
     writer.uint32(66).string(message.name);
     writer.uint32(72).bool(message.numbering);
     writer.uint32(80).bool(message.private);
     for (const v of message.similarLists) {
-      List.encode(v!, writer.uint32(90).fork()).ldelim();
+      List.encode(v, writer.uint32(90).fork()).ldelim();
     }
     writer.uint32(98).string(message.slug);
     if (message.updatedAt !== undefined && message.updatedAt !== undefined) {
@@ -11666,7 +11668,7 @@ export const List = {
   },
   decode(input: Uint8Array | Reader, length?: number): List {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseList } as List;
     message.listEntries = [];
     message.listTags = [];
@@ -11954,13 +11956,13 @@ export const List = {
 export const ListEntryResult = {
   encode(message: ListEntryResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.listentries) {
-      ListEntry.encode(v!, writer.uint32(10).fork()).ldelim();
+      ListEntry.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): ListEntryResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseListEntryResult } as ListEntryResult;
     message.listentries = [];
     while (reader.pos < end) {
@@ -12030,7 +12032,7 @@ export const ListEntry = {
   },
   decode(input: Uint8Array | Reader, length?: number): ListEntry {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseListEntry } as ListEntry;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -12185,13 +12187,13 @@ export const ListEntry = {
 export const MultiplayerModeResult = {
   encode(message: MultiplayerModeResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.multiplayermodes) {
-      MultiplayerMode.encode(v!, writer.uint32(10).fork()).ldelim();
+      MultiplayerMode.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): MultiplayerModeResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseMultiplayerModeResult } as MultiplayerModeResult;
     message.multiplayermodes = [];
     while (reader.pos < end) {
@@ -12263,7 +12265,7 @@ export const MultiplayerMode = {
   },
   decode(input: Uint8Array | Reader, length?: number): MultiplayerMode {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseMultiplayerMode } as MultiplayerMode;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -12502,13 +12504,13 @@ export const MultiplayerMode = {
 export const PageResult = {
   encode(message: PageResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.pages) {
-      Page.encode(v!, writer.uint32(10).fork()).ldelim();
+      Page.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PageResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePageResult } as PageResult;
     message.pages = [];
     while (reader.pos < end) {
@@ -12595,14 +12597,14 @@ export const Page = {
       User.encode(message.user, writer.uint32(170).fork()).ldelim();
     }
     for (const v of message.websites) {
-      PageWebsite.encode(v!, writer.uint32(178).fork()).ldelim();
+      PageWebsite.encode(v, writer.uint32(178).fork()).ldelim();
     }
     writer.uint32(186).string(message.checksum);
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): Page {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePage } as Page;
     message.websites = [];
     while (reader.pos < end) {
@@ -12960,13 +12962,13 @@ export const Page = {
 export const PageBackgroundResult = {
   encode(message: PageBackgroundResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.pagebackgrounds) {
-      PageBackground.encode(v!, writer.uint32(10).fork()).ldelim();
+      PageBackground.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PageBackgroundResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePageBackgroundResult } as PageBackgroundResult;
     message.pagebackgrounds = [];
     while (reader.pos < end) {
@@ -13027,7 +13029,7 @@ export const PageBackground = {
   },
   decode(input: Uint8Array | Reader, length?: number): PageBackground {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePageBackground } as PageBackground;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -13168,13 +13170,13 @@ export const PageBackground = {
 export const PageLogoResult = {
   encode(message: PageLogoResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.pagelogos) {
-      PageLogo.encode(v!, writer.uint32(10).fork()).ldelim();
+      PageLogo.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PageLogoResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePageLogoResult } as PageLogoResult;
     message.pagelogos = [];
     while (reader.pos < end) {
@@ -13235,7 +13237,7 @@ export const PageLogo = {
   },
   decode(input: Uint8Array | Reader, length?: number): PageLogo {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePageLogo } as PageLogo;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -13376,13 +13378,13 @@ export const PageLogo = {
 export const PageWebsiteResult = {
   encode(message: PageWebsiteResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.pagewebsites) {
-      PageWebsite.encode(v!, writer.uint32(10).fork()).ldelim();
+      PageWebsite.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PageWebsiteResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePageWebsiteResult } as PageWebsiteResult;
     message.pagewebsites = [];
     while (reader.pos < end) {
@@ -13440,7 +13442,7 @@ export const PageWebsite = {
   },
   decode(input: Uint8Array | Reader, length?: number): PageWebsite {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePageWebsite } as PageWebsite;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -13539,13 +13541,13 @@ export const PageWebsite = {
 export const PersonResult = {
   encode(message: PersonResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.people) {
-      Person.encode(v!, writer.uint32(10).fork()).ldelim();
+      Person.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PersonResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePersonResult } as PersonResult;
     message.people = [];
     while (reader.pos < end) {
@@ -13597,14 +13599,14 @@ export const Person = {
     writer.uint32(8).uint64(message.id);
     writer.uint32(18).string(message.bio);
     for (const v of message.characters) {
-      Character.encode(v!, writer.uint32(26).fork()).ldelim();
+      Character.encode(v, writer.uint32(26).fork()).ldelim();
     }
     writer.uint32(32).int32(message.country);
     if (message.createdAt !== undefined && message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(42).fork()).ldelim();
     }
     for (const v of message.creditedGames) {
-      Game.encode(v!, writer.uint32(50).fork()).ldelim();
+      Game.encode(v, writer.uint32(50).fork()).ldelim();
     }
     writer.uint32(58).string(message.description);
     if (message.dob !== undefined && message.dob !== undefined) {
@@ -13617,7 +13619,7 @@ export const Person = {
     }
     writer.uint32(98).string(message.name);
     for (const v of message.nicknames) {
-      writer.uint32(106).string(v!);
+      writer.uint32(106).string(v);
     }
     if (message.parent !== undefined && message.parent !== undefined) {
       Person.encode(message.parent, writer.uint32(114).fork()).ldelim();
@@ -13628,17 +13630,17 @@ export const Person = {
     }
     writer.uint32(138).string(message.url);
     for (const v of message.voiceActed) {
-      Game.encode(v!, writer.uint32(146).fork()).ldelim();
+      Game.encode(v, writer.uint32(146).fork()).ldelim();
     }
     for (const v of message.websites) {
-      PersonWebsite.encode(v!, writer.uint32(154).fork()).ldelim();
+      PersonWebsite.encode(v, writer.uint32(154).fork()).ldelim();
     }
     writer.uint32(162).string(message.checksum);
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): Person {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePerson } as Person;
     message.characters = [];
     message.creditedGames = [];
@@ -13982,13 +13984,13 @@ export const Person = {
 export const PersonMugShotResult = {
   encode(message: PersonMugShotResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.personmugshots) {
-      PersonMugShot.encode(v!, writer.uint32(10).fork()).ldelim();
+      PersonMugShot.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PersonMugShotResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePersonMugShotResult } as PersonMugShotResult;
     message.personmugshots = [];
     while (reader.pos < end) {
@@ -14047,7 +14049,7 @@ export const PersonMugShot = {
   },
   decode(input: Uint8Array | Reader, length?: number): PersonMugShot {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePersonMugShot } as PersonMugShot;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -14160,13 +14162,13 @@ export const PersonMugShot = {
 export const PersonWebsiteResult = {
   encode(message: PersonWebsiteResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.personwebsites) {
-      PersonWebsite.encode(v!, writer.uint32(10).fork()).ldelim();
+      PersonWebsite.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PersonWebsiteResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePersonWebsiteResult } as PersonWebsiteResult;
     message.personwebsites = [];
     while (reader.pos < end) {
@@ -14224,7 +14226,7 @@ export const PersonWebsite = {
   },
   decode(input: Uint8Array | Reader, length?: number): PersonWebsite {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePersonWebsite } as PersonWebsite;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -14323,13 +14325,13 @@ export const PersonWebsite = {
 export const PlatformResult = {
   encode(message: PlatformResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.platforms) {
-      Platform.encode(v!, writer.uint32(10).fork()).ldelim();
+      Platform.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PlatformResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatformResult } as PlatformResult;
     message.platforms = [];
     while (reader.pos < end) {
@@ -14400,17 +14402,17 @@ export const Platform = {
     }
     writer.uint32(106).string(message.url);
     for (const v of message.versions) {
-      PlatformVersion.encode(v!, writer.uint32(114).fork()).ldelim();
+      PlatformVersion.encode(v, writer.uint32(114).fork()).ldelim();
     }
     for (const v of message.websites) {
-      PlatformWebsite.encode(v!, writer.uint32(122).fork()).ldelim();
+      PlatformWebsite.encode(v, writer.uint32(122).fork()).ldelim();
     }
     writer.uint32(130).string(message.checksum);
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): Platform {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatform } as Platform;
     message.versions = [];
     message.websites = [];
@@ -14677,13 +14679,13 @@ export const Platform = {
 export const PlatformLogoResult = {
   encode(message: PlatformLogoResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.platformlogos) {
-      PlatformLogo.encode(v!, writer.uint32(10).fork()).ldelim();
+      PlatformLogo.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PlatformLogoResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatformLogoResult } as PlatformLogoResult;
     message.platformlogos = [];
     while (reader.pos < end) {
@@ -14744,7 +14746,7 @@ export const PlatformLogo = {
   },
   decode(input: Uint8Array | Reader, length?: number): PlatformLogo {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatformLogo } as PlatformLogo;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -14885,13 +14887,13 @@ export const PlatformLogo = {
 export const PlatformVersionResult = {
   encode(message: PlatformVersionResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.platformversions) {
-      PlatformVersion.encode(v!, writer.uint32(10).fork()).ldelim();
+      PlatformVersion.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PlatformVersionResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatformVersionResult } as PlatformVersionResult;
     message.platformversions = [];
     while (reader.pos < end) {
@@ -14942,7 +14944,7 @@ export const PlatformVersion = {
   encode(message: PlatformVersion, writer: Writer = Writer.create()): Writer {
     writer.uint32(8).uint64(message.id);
     for (const v of message.companies) {
-      PlatformVersionCompany.encode(v!, writer.uint32(18).fork()).ldelim();
+      PlatformVersionCompany.encode(v, writer.uint32(18).fork()).ldelim();
     }
     writer.uint32(26).string(message.connectivity);
     writer.uint32(34).string(message.cpu);
@@ -14960,7 +14962,7 @@ export const PlatformVersion = {
       PlatformLogo.encode(message.platformLogo, writer.uint32(106).fork()).ldelim();
     }
     for (const v of message.platformVersionReleaseDates) {
-      PlatformVersionReleaseDate.encode(v!, writer.uint32(114).fork()).ldelim();
+      PlatformVersionReleaseDate.encode(v, writer.uint32(114).fork()).ldelim();
     }
     writer.uint32(122).string(message.resolutions);
     writer.uint32(130).string(message.slug);
@@ -14973,7 +14975,7 @@ export const PlatformVersion = {
   },
   decode(input: Uint8Array | Reader, length?: number): PlatformVersion {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatformVersion } as PlatformVersion;
     message.companies = [];
     message.platformVersionReleaseDates = [];
@@ -15310,13 +15312,13 @@ export const PlatformVersion = {
 export const PlatformVersionCompanyResult = {
   encode(message: PlatformVersionCompanyResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.platformversioncompanies) {
-      PlatformVersionCompany.encode(v!, writer.uint32(10).fork()).ldelim();
+      PlatformVersionCompany.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PlatformVersionCompanyResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatformVersionCompanyResult } as PlatformVersionCompanyResult;
     message.platformversioncompanies = [];
     while (reader.pos < end) {
@@ -15377,7 +15379,7 @@ export const PlatformVersionCompany = {
   },
   decode(input: Uint8Array | Reader, length?: number): PlatformVersionCompany {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatformVersionCompany } as PlatformVersionCompany;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -15490,13 +15492,13 @@ export const PlatformVersionCompany = {
 export const PlatformVersionReleaseDateResult = {
   encode(message: PlatformVersionReleaseDateResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.platformversionreleasedates) {
-      PlatformVersionReleaseDate.encode(v!, writer.uint32(10).fork()).ldelim();
+      PlatformVersionReleaseDate.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PlatformVersionReleaseDateResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatformVersionReleaseDateResult } as PlatformVersionReleaseDateResult;
     message.platformversionreleasedates = [];
     while (reader.pos < end) {
@@ -15568,7 +15570,7 @@ export const PlatformVersionReleaseDate = {
   },
   decode(input: Uint8Array | Reader, length?: number): PlatformVersionReleaseDate {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatformVersionReleaseDate } as PlatformVersionReleaseDate;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -15751,13 +15753,13 @@ export const PlatformVersionReleaseDate = {
 export const PlatformWebsiteResult = {
   encode(message: PlatformWebsiteResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.platformwebsites) {
-      PlatformWebsite.encode(v!, writer.uint32(10).fork()).ldelim();
+      PlatformWebsite.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PlatformWebsiteResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatformWebsiteResult } as PlatformWebsiteResult;
     message.platformwebsites = [];
     while (reader.pos < end) {
@@ -15815,7 +15817,7 @@ export const PlatformWebsite = {
   },
   decode(input: Uint8Array | Reader, length?: number): PlatformWebsite {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlatformWebsite } as PlatformWebsite;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -15914,13 +15916,13 @@ export const PlatformWebsite = {
 export const PlayerPerspectiveResult = {
   encode(message: PlayerPerspectiveResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.playerperspectives) {
-      PlayerPerspective.encode(v!, writer.uint32(10).fork()).ldelim();
+      PlayerPerspective.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PlayerPerspectiveResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlayerPerspectiveResult } as PlayerPerspectiveResult;
     message.playerperspectives = [];
     while (reader.pos < end) {
@@ -15984,7 +15986,7 @@ export const PlayerPerspective = {
   },
   decode(input: Uint8Array | Reader, length?: number): PlayerPerspective {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePlayerPerspective } as PlayerPerspective;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -16111,13 +16113,13 @@ export const PlayerPerspective = {
 export const ProductFamilyResult = {
   encode(message: ProductFamilyResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.productfamilies) {
-      ProductFamily.encode(v!, writer.uint32(10).fork()).ldelim();
+      ProductFamily.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): ProductFamilyResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseProductFamilyResult } as ProductFamilyResult;
     message.productfamilies = [];
     while (reader.pos < end) {
@@ -16174,7 +16176,7 @@ export const ProductFamily = {
   },
   decode(input: Uint8Array | Reader, length?: number): ProductFamily {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseProductFamily } as ProductFamily;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -16259,13 +16261,13 @@ export const ProductFamily = {
 export const PulseResult = {
   encode(message: PulseResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.pulses) {
-      Pulse.encode(v!, writer.uint32(10).fork()).ldelim();
+      Pulse.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PulseResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePulseResult } as PulseResult;
     message.pulses = [];
     while (reader.pos < end) {
@@ -16343,7 +16345,7 @@ export const Pulse = {
       Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(114).fork()).ldelim();
     }
     for (const v of message.videos) {
-      writer.uint32(122).string(v!);
+      writer.uint32(122).string(v);
     }
     if (message.website !== undefined && message.website !== undefined) {
       PulseUrl.encode(message.website, writer.uint32(130).fork()).ldelim();
@@ -16353,7 +16355,7 @@ export const Pulse = {
   },
   decode(input: Uint8Array | Reader, length?: number): Pulse {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePulse } as Pulse;
     message.tags = [];
     message.videos = [];
@@ -16641,13 +16643,13 @@ export const Pulse = {
 export const PulseGroupResult = {
   encode(message: PulseGroupResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.pulsegroups) {
-      PulseGroup.encode(v!, writer.uint32(10).fork()).ldelim();
+      PulseGroup.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PulseGroupResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePulseGroupResult } as PulseGroupResult;
     message.pulsegroups = [];
     while (reader.pos < end) {
@@ -16708,7 +16710,7 @@ export const PulseGroup = {
       Timestamp.encode(toTimestamp(message.publishedAt), writer.uint32(42).fork()).ldelim();
     }
     for (const v of message.pulses) {
-      Pulse.encode(v!, writer.uint32(50).fork()).ldelim();
+      Pulse.encode(v, writer.uint32(50).fork()).ldelim();
     }
     writer.uint32(58).fork();
     for (const v of message.tags) {
@@ -16723,7 +16725,7 @@ export const PulseGroup = {
   },
   decode(input: Uint8Array | Reader, length?: number): PulseGroup {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePulseGroup } as PulseGroup;
     message.pulses = [];
     message.tags = [];
@@ -16899,13 +16901,13 @@ export const PulseGroup = {
 export const PulseImageResult = {
   encode(message: PulseImageResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.pulseimages) {
-      PulseImage.encode(v!, writer.uint32(10).fork()).ldelim();
+      PulseImage.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PulseImageResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePulseImageResult } as PulseImageResult;
     message.pulseimages = [];
     while (reader.pos < end) {
@@ -16966,7 +16968,7 @@ export const PulseImage = {
   },
   decode(input: Uint8Array | Reader, length?: number): PulseImage {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePulseImage } as PulseImage;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -17107,13 +17109,13 @@ export const PulseImage = {
 export const PulseSourceResult = {
   encode(message: PulseSourceResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.pulsesources) {
-      PulseSource.encode(v!, writer.uint32(10).fork()).ldelim();
+      PulseSource.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PulseSourceResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePulseSourceResult } as PulseSourceResult;
     message.pulsesources = [];
     while (reader.pos < end) {
@@ -17175,7 +17177,7 @@ export const PulseSource = {
   },
   decode(input: Uint8Array | Reader, length?: number): PulseSource {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePulseSource } as PulseSource;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -17274,13 +17276,13 @@ export const PulseSource = {
 export const PulseUrlResult = {
   encode(message: PulseUrlResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.pulseurls) {
-      PulseUrl.encode(v!, writer.uint32(10).fork()).ldelim();
+      PulseUrl.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): PulseUrlResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePulseUrlResult } as PulseUrlResult;
     message.pulseurls = [];
     while (reader.pos < end) {
@@ -17337,7 +17339,7 @@ export const PulseUrl = {
   },
   decode(input: Uint8Array | Reader, length?: number): PulseUrl {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...basePulseUrl } as PulseUrl;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -17422,13 +17424,13 @@ export const PulseUrl = {
 export const RateResult = {
   encode(message: RateResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.rates) {
-      Rate.encode(v!, writer.uint32(10).fork()).ldelim();
+      Rate.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): RateResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseRateResult } as RateResult;
     message.rates = [];
     while (reader.pos < end) {
@@ -17491,7 +17493,7 @@ export const Rate = {
   },
   decode(input: Uint8Array | Reader, length?: number): Rate {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseRate } as Rate;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -17604,13 +17606,13 @@ export const Rate = {
 export const ReleaseDateResult = {
   encode(message: ReleaseDateResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.releasedates) {
-      ReleaseDate.encode(v!, writer.uint32(10).fork()).ldelim();
+      ReleaseDate.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): ReleaseDateResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseReleaseDateResult } as ReleaseDateResult;
     message.releasedates = [];
     while (reader.pos < end) {
@@ -17685,7 +17687,7 @@ export const ReleaseDate = {
   },
   decode(input: Uint8Array | Reader, length?: number): ReleaseDate {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseReleaseDate } as ReleaseDate;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -17882,13 +17884,13 @@ export const ReleaseDate = {
 export const ReviewResult = {
   encode(message: ReviewResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.reviews) {
-      Review.encode(v!, writer.uint32(10).fork()).ldelim();
+      Review.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): ReviewResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseReviewResult } as ReviewResult;
     message.reviews = [];
     while (reader.pos < end) {
@@ -17975,7 +17977,7 @@ export const Review = {
   },
   decode(input: Uint8Array | Reader, length?: number): Review {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseReview } as Review;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -18284,13 +18286,13 @@ export const Review = {
 export const ReviewVideoResult = {
   encode(message: ReviewVideoResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.reviewvideos) {
-      ReviewVideo.encode(v!, writer.uint32(10).fork()).ldelim();
+      ReviewVideo.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): ReviewVideoResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseReviewVideoResult } as ReviewVideoResult;
     message.reviewvideos = [];
     while (reader.pos < end) {
@@ -18347,7 +18349,7 @@ export const ReviewVideo = {
   },
   decode(input: Uint8Array | Reader, length?: number): ReviewVideo {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseReviewVideo } as ReviewVideo;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -18432,13 +18434,13 @@ export const ReviewVideo = {
 export const ScreenshotResult = {
   encode(message: ScreenshotResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.screenshots) {
-      Screenshot.encode(v!, writer.uint32(10).fork()).ldelim();
+      Screenshot.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): ScreenshotResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseScreenshotResult } as ScreenshotResult;
     message.screenshots = [];
     while (reader.pos < end) {
@@ -18502,7 +18504,7 @@ export const Screenshot = {
   },
   decode(input: Uint8Array | Reader, length?: number): Screenshot {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseScreenshot } as Screenshot;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -18657,13 +18659,13 @@ export const Screenshot = {
 export const SearchResult = {
   encode(message: SearchResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.searches) {
-      Search.encode(v!, writer.uint32(10).fork()).ldelim();
+      Search.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): SearchResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseSearchResult } as SearchResult;
     message.searches = [];
     while (reader.pos < end) {
@@ -18749,7 +18751,7 @@ export const Search = {
   },
   decode(input: Uint8Array | Reader, length?: number): Search {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseSearch } as Search;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -18988,13 +18990,13 @@ export const Search = {
 export const TestDummyResult = {
   encode(message: TestDummyResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.testdummies) {
-      TestDummy.encode(v!, writer.uint32(10).fork()).ldelim();
+      TestDummy.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): TestDummyResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseTestDummyResult } as TestDummyResult;
     message.testdummies = [];
     while (reader.pos < end) {
@@ -19064,10 +19066,10 @@ export const TestDummy = {
     writer.uint32(88).bool(message.private);
     writer.uint32(98).string(message.slug);
     for (const v of message.stringArray) {
-      writer.uint32(106).string(v!);
+      writer.uint32(106).string(v);
     }
     for (const v of message.testDummies) {
-      TestDummy.encode(v!, writer.uint32(114).fork()).ldelim();
+      TestDummy.encode(v, writer.uint32(114).fork()).ldelim();
     }
     if (message.testDummy !== undefined && message.testDummy !== undefined) {
       TestDummy.encode(message.testDummy, writer.uint32(122).fork()).ldelim();
@@ -19084,7 +19086,7 @@ export const TestDummy = {
   },
   decode(input: Uint8Array | Reader, length?: number): TestDummy {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseTestDummy } as TestDummy;
     message.integerArray = [];
     message.stringArray = [];
@@ -19407,13 +19409,13 @@ export const TestDummy = {
 export const ThemeResult = {
   encode(message: ThemeResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.themes) {
-      Theme.encode(v!, writer.uint32(10).fork()).ldelim();
+      Theme.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): ThemeResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseThemeResult } as ThemeResult;
     message.themes = [];
     while (reader.pos < end) {
@@ -19477,7 +19479,7 @@ export const Theme = {
   },
   decode(input: Uint8Array | Reader, length?: number): Theme {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseTheme } as Theme;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -19604,13 +19606,13 @@ export const Theme = {
 export const TimeToBeatResult = {
   encode(message: TimeToBeatResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.timetobeats) {
-      TimeToBeat.encode(v!, writer.uint32(10).fork()).ldelim();
+      TimeToBeat.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): TimeToBeatResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseTimeToBeatResult } as TimeToBeatResult;
     message.timetobeats = [];
     while (reader.pos < end) {
@@ -19671,7 +19673,7 @@ export const TimeToBeat = {
   },
   decode(input: Uint8Array | Reader, length?: number): TimeToBeat {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseTimeToBeat } as TimeToBeat;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -19784,13 +19786,13 @@ export const TimeToBeat = {
 export const TitleResult = {
   encode(message: TitleResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.titles) {
-      Title.encode(v!, writer.uint32(10).fork()).ldelim();
+      Title.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): TitleResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseTitleResult } as TitleResult;
     message.titles = [];
     while (reader.pos < end) {
@@ -19845,7 +19847,7 @@ export const Title = {
     }
     writer.uint32(26).string(message.description);
     for (const v of message.games) {
-      Game.encode(v!, writer.uint32(34).fork()).ldelim();
+      Game.encode(v, writer.uint32(34).fork()).ldelim();
     }
     writer.uint32(42).string(message.name);
     writer.uint32(50).string(message.slug);
@@ -19858,7 +19860,7 @@ export const Title = {
   },
   decode(input: Uint8Array | Reader, length?: number): Title {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseTitle } as Title;
     message.games = [];
     while (reader.pos < end) {
@@ -20020,13 +20022,13 @@ export const Title = {
 export const UserResult = {
   encode(message: UserResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.users) {
-      User.encode(v!, writer.uint32(10).fork()).ldelim();
+      User.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): UserResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseUserResult } as UserResult;
     message.users = [];
     while (reader.pos < end) {
@@ -20108,7 +20110,7 @@ export const User = {
   },
   decode(input: Uint8Array | Reader, length?: number): User {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseUser } as User;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -20487,13 +20489,13 @@ export const User = {
 export const WebsiteResult = {
   encode(message: WebsiteResult, writer: Writer = Writer.create()): Writer {
     for (const v of message.websites) {
-      Website.encode(v!, writer.uint32(10).fork()).ldelim();
+      Website.encode(v, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: Uint8Array | Reader, length?: number): WebsiteResult {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseWebsiteResult } as WebsiteResult;
     message.websites = [];
     while (reader.pos < end) {
@@ -20554,7 +20556,7 @@ export const Website = {
   },
   decode(input: Uint8Array | Reader, length?: number): Website {
     const reader = input instanceof Uint8Array ? new Reader(input) : input;
-    let end = length === undefined ? reader.len : reader.pos + length;
+    const end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseWebsite } as Website;
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -20694,6 +20696,7 @@ type DeepPartial<T> = T extends Builtin
   ? T
   : T extends Array<infer U>
   ? Array<DeepPartial<U>>
+  // tslint:disable-next-line: no-shadowed-variable
   : T extends ReadonlyArray<infer U>
   ? ReadonlyArray<DeepPartial<U>>
   : T extends {}

@@ -3,7 +3,7 @@ include: package:pedantic/analysis_options.yaml
 analyzer:
   exclude: 
     - build/**
-    - lib/services/igdbapi/**
+    - lib/services/igdb_api/igdb_api_client/**
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false

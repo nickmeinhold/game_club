@@ -58,3 +58,6 @@ lib/api_key.dart
 
 # ts-proto node package 
 util/node_modules
+
+# local environment variables for cloud funcitons emulator
+functions/.runtimeconfig.json
