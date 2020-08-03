@@ -1,38 +1,45 @@
+import * as functions from 'firebase-functions';
 import * as express from 'express';
 import * as cors from 'cors';
 import * as rp from 'request-promise';
+import request = require('request');
+import { GameResult } from './api_client/igdbapi';
 
 export const apiProxyApp = express();
 
-// Get the code from the request, call retrieveAuthToken and return the response
+// Act as proxy for an API call to the IGDB API 
 const proxyAPICall = async (req: any, res: any) => {
   try {
-
-    // If we can't get a code and state from the request it's probably an error message, just send back the original url
-    if(req.query.code === null || req.query.code === undefined || req.query.state === null || req.query.state === undefined) {
-      return res.send(req.originalUrl);
-    }
     
-    const response = await makeAPICall(req.query.code);
+    const response = await makeAPICall();
+    console.log('response: '+response);
+    const arrayData : Uint8Array = response;
+    console.log(arrayData.length);
+    const gameResult = GameResult.decode(arrayData);
+    console.log('gameResult: ' + gameResult);
 
-    // Close the github auth window, the entry in database will update the UI of the original window 
-    return res.send(response);
+    // const encodedResponse = Buffer.from(response).toString('base64');
+
+    return res.send(gameResult);
   } catch(error) {
     console.error(error);
     return res.status(500).send('Something went wrong while attempting to proxy the API call.');
   }
 };
 
-// Exchange the code from github (plus a secret) for an auth token 
 function makeAPICall(section: string = 'games') {
-  // 'user-key': functions.config().igdbapi.userkey 
-  return rp({
+  const options : request.UriOptions & rp.RequestPromiseOptions = {
     method: 'POST',
     uri: 'https://api-v3.igdb.com/' + 'games' + '.pb',
-    body: 'fields name; limit 10;',
-    json: false,
-  });
+    headers: {
+      'user-key': functions.config().igdbapi.userkey,
+      'content-type': 'application/octet-stream'
+    },
+    body: 'fields name; limit 10;'
+  };
+
+  return rp(options);
 }
 
-apiProxyApp.use(cors());
+apiProxyApp.use(cors({ origin: true }));
 apiProxyApp.use(proxyAPICall);

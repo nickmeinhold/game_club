@@ -61,7 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _call() async {
-    final responseString = await context.read<IGDBService>().getHttp();
+    final responseString =
+        await context.read<IGDBService>().getProxiedGamesString();
     setState(() {
       _response = responseString;
     });
